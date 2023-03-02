@@ -8,9 +8,10 @@ import EventDetailPage, {
 } from "./pages/EventDetailPage";
 import EventsPage, { loader as eventsLoader } from "./pages/EventsPage";
 import HomePage from "./pages/HomePage";
-import NewEventPage, { action as newEventAction } from "./pages/NewEventPage";
+import NewEventPage from "./pages/NewEventPage";
 import RootLayout from "./pages/RootLayout";
 import EventsLayout from "./pages/EventsLayout";
+import { action as manipulateEventAction } from "./components/EventForm";
 
 const router = createBrowserRouter([
   //shouldn't be recreated or reloaded, just loads once on start
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
           },
           {
             path: ":eventId",
-            id: "event-detail", 
+            id: "event-detail",
             loader: eventDetailLoader, //Sharing a loader
             children: [
               {
@@ -39,13 +40,17 @@ const router = createBrowserRouter([
                 element: <EventDetailPage />,
                 action: eventDeleteAction,
               },
-              { path: "edit", element: <EditEventPage /> },
+              {
+                path: "edit",
+                element: <EditEventPage />,
+                action: manipulateEventAction,
+              },
             ],
           },
           {
             path: "new",
             element: <NewEventPage />,
-            action: newEventAction,
+            action: manipulateEventAction,
           },
         ],
       },

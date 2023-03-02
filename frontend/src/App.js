@@ -4,10 +4,10 @@ import EditEventPage from "./pages/EditEventPage";
 import ErrorPage from "./pages/ErrorPage";
 import EventDetailPage from "./pages/EventDetailPage";
 import EventsPage from "./pages/EventsPage";
-import EventsNavigation from "./components/EventsNavigation";
 import HomePage from "./pages/HomePage";
 import NewEventPage from "./pages/NewEventPage";
 import RootLayout from "./pages/RootLayout";
+import EventsLayout from "./pages/EventsLayout";
 
 const router = createBrowserRouter([
   //shouldn't be recreated or reloaded, just loads once on start
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       {
         path: "events",
-        element: <EventsNavigation />,
+        element: <EventsLayout />,
         children: [
           { index: true, element: <EventsPage /> },
           { path: ":eventId", element: <EventDetailPage /> },

@@ -36,5 +36,5 @@ export const action = async ({ params, request }) => {
     throw json({ message: "Could not delete event." }, { status: 500 });
   }
 
-  redirect("/events");
+  return redirect("/events");
 };
